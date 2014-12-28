@@ -16,6 +16,10 @@ gem 'haml-rails'
 gem 'pg'
 gem 'puma'
 gem 'simple_form'
+gem 'cancancan'
+gem 'rails_admin'
+gem 'omniauth-facebook'
+gem 'carrierwave'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

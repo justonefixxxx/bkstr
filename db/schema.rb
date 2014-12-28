@@ -11,10 +11,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223140201) do
+ActiveRecord::Schema.define(version: 20141227234056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "author_book", id: false, force: true do |t|
+    t.integer "author_id"
+    t.integer "book_id"
+  end
+
+  add_index "author_book", ["author_id"], name: "index_author_book_on_author_id", using: :btree
+  add_index "author_book", ["book_id"], name: "index_author_book_on_book_id", using: :btree
+
+  create_table "authors", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "book_category", id: false, force: true do |t|
+    t.integer "book_id"
+    t.integer "category_id"
+  end
+
+  add_index "book_category", ["book_id"], name: "index_book_category_on_book_id", using: :btree
+  add_index "book_category", ["category_id"], name: "index_book_category_on_category_id", using: :btree
+
+  create_table "books", force: true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.decimal  "price",       precision: 8, scale: 2
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -34,6 +73,8 @@ ActiveRecord::Schema.define(version: 20141223140201) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

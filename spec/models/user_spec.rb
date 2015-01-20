@@ -10,4 +10,13 @@ describe User do
     expect(@user.email).to match 'user@example.com'
   end
 
+  context "#order_in_progress" do
+  	before { @user = create(:user)}
+  	it "returns order in progress" do
+  		@order = create(:order, :user=>@user, :state=>Order.states[:in_progress])
+  		expect(@user.order_in_progress).to eql @order
+  	end
+
+	end
+
 end

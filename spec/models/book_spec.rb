@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Book, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+	before { @book = build :book }
+	subject { @book }
+	it { should be_valid }
+
+
+	describe "it" do
+	end
 end

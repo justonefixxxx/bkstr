@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141228003911) do
+ActiveRecord::Schema.define(version: 20150113225210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 20141228003911) do
     t.datetime "updated_at"
   end
 
+  create_table "credit_cards", force: true do |t|
+    t.string   "number"
+    t.string   "cvv"
+    t.string   "expiration_date"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "customers", force: true do |t|
     t.string   "email"
     t.string   "first_name"
@@ -65,9 +75,27 @@ ActiveRecord::Schema.define(version: 20141228003911) do
     t.datetime "updated_at"
   end
 
+  create_table "order_items", force: true do |t|
+    t.decimal  "price",      precision: 8, scale: 2
+    t.integer  "quantity"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "orders", force: true do |t|
+    t.decimal  "total_price",    precision: 8, scale: 2
+    t.string   "complited_date"
+    t.integer  "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
+
   create_table "ratings", force: true do |t|
     t.string   "review"
-    t.integer  "rating"
+    t.integer  "rating_number"
     t.integer  "customer_id"
     t.integer  "book_id"
     t.datetime "created_at"

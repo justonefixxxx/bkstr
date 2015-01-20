@@ -14,7 +14,7 @@ describe User do
   	before { @user = create(:user)}
   	it "returns order in progress" do
   		@order = create(:order, :user=>@user, :state=>Order.states[:in_progress])
-  		expect(@user.order_in_progress).to eql @order
+  		expect(@user.order_in_progress).to equal @order
   	end
 
 	end

@@ -1,10 +1,11 @@
-class OrdersController < ApplicationController
+class OrdersController < AplicationController
 
 	before_action :authenticate_user!
 
 	def add_item
 		@order << item
 	end
+	helper_method :add_item
 
 	def remove_item
 

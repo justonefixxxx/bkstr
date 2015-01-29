@@ -21,6 +21,8 @@ gem 'rails_admin'
 gem 'omniauth-facebook'
 gem 'carrierwave'
 gem 'aasm'
+gem 'mini_magick'
+gem 'image_suckr'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller', :platforms=>[:mri_21]

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150113225210) do
+ActiveRecord::Schema.define(version: 20150129011628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,13 @@ ActiveRecord::Schema.define(version: 20150113225210) do
 
   add_index "book_category", ["book_id"], name: "index_book_category_on_book_id", using: :btree
   add_index "book_category", ["category_id"], name: "index_book_category_on_category_id", using: :btree
+
+  create_table "book_covers", force: true do |t|
+    t.string  "image"
+    t.integer "book_id"
+  end
+
+  add_index "book_covers", ["book_id"], name: "index_book_covers_on_book_id", using: :btree
 
   create_table "books", force: true do |t|
     t.string   "title"

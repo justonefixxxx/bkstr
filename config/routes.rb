@@ -10,9 +10,7 @@ Rails.application.routes.draw do
   	put 'remove/:book_id', to: 'carts#remove', as: :remove_from
 	end
 
-  root to: 'visitors#index'
+  root to: 'books#index'
   devise_for :users,
   	:controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
-
-
 end

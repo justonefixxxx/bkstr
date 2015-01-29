@@ -7,7 +7,7 @@ feature "Shopping cart" do
 
 		book = FactoryGirl.create(:book)
 		visit book_path(book)
-		click_link_or_button('Add to cart')
+		click_link_or_button('Add to cart', add_item)
 		page.has_content?('Shopping cart', book.title)
 
 	end

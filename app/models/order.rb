@@ -6,8 +6,10 @@ class Order < ActiveRecord::Base
 	enum :state => [:in_progress, :in_queue, :in_delivery, :delivered]
 
 	aasm :column => :state, :enum => true do
-    state :sleeping, :initial => true
-    state :running
+    state :in_progress, :initial => true
+    state :in_queue
+    state :in_delivery
+    state :delivered
   end
 
 end

@@ -7,11 +7,7 @@
   %b Full description:
   = @book.description
 %p
-  %b Image:
-  = @book.image
-%p
   %b Price:
   = @book.price
 
-= link_to 'Add to cart', add_book
-
+= link_to 'Add to cart', :controller=>:orders, :action=>:add_item

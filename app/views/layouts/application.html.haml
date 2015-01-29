@@ -2,14 +2,14 @@
 %html
   %head
     %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
-    %title= content_for?(:title) ? yield(:title) : 'Bkstr'
-    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'Bkstr'}"}
+    %title= content_for?(:title) ? yield(:title) : 'The Bookstores'
+    %meta{:name => "description", :content => "#{content_for?(:description) ? yield(:description) : 'The Bookstore'}"}
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
     %header
       = render 'layouts/navigation'
-    %main{:role => "main"}
-      = render 'layouts/messages'
+    %main{:role => "main", :class =>".col-xs-12 .col-md-8"}
       = yield
+    %aside{:class =>".col-xs-6 .col-md-4"}

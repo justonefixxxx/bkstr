@@ -1,6 +1,6 @@
 - @books.each do |book|
   %div[book]
     %ul.list-unstyled
-      = book_cover(@book)
+      = Image::book_cover.book_id
       = link_to book.title, @book
       = book.price

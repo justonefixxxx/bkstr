@@ -10,16 +10,5 @@ module Image
 
 	  mount_uploader :image, ImageUploader
 
-    def image
-      @image||image_from_google
-    end
-
-    private
-    def image_from_google(book.title)
-      suckr = ImageSuckr::GoogleSuckr.new
-      image_url = suckr.get_image_url({"q" => "#{book.title}"})
-      image = MiniMagick::Image.open(image_url)
-    end
-
 	end
 end
